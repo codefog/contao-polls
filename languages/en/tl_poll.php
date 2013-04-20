@@ -25,8 +25,8 @@ $GLOBALS['TL_LANG']['tl_poll']['inactive_behaviorNotVoted'] = array('User has no
 $GLOBALS['TL_LANG']['tl_poll']['inactive_behaviorVoted']    = array('User has voted (poll inactive)', 'Please specify the behavior if the user has voted and the poll is inactive.');
 $GLOBALS['TL_LANG']['tl_poll']['published']                 = array('Publish poll', 'Make the poll publicly visible on the website.');
 $GLOBALS['TL_LANG']['tl_poll']['closed']                    = array('Close poll', 'Close the poll and disable voting.');
-$GLOBALS['TL_LANG']['tl_poll']['activeStart']               = array('Active from', 'Disable voting the poll on the website before this day.');
-$GLOBALS['TL_LANG']['tl_poll']['activeStop']                = array('Active until', 'Disable voting the poll on the website on and after this day.');
+$GLOBALS['TL_LANG']['tl_poll']['activeStart']               = array('Active from', 'Disable voting the poll before this day.');
+$GLOBALS['TL_LANG']['tl_poll']['activeStop']                = array('Active until', 'Disable voting the poll on and after this day.');
 $GLOBALS['TL_LANG']['tl_poll']['showStart']                 = array('Show from', 'Do not display the poll on the website before this day.');
 $GLOBALS['TL_LANG']['tl_poll']['showStop']                  = array('Show until', 'Do not display the poll on the website on and after this day.');
 $GLOBALS['TL_LANG']['tl_poll']['tstamp']                    = array('Revision date', 'Date and time of the latest revision');
@@ -36,7 +36,7 @@ $GLOBALS['TL_LANG']['tl_poll']['tstamp']                    = array('Revision da
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_poll']['title_legend']    = 'Title and featured';
+$GLOBALS['TL_LANG']['tl_poll']['title_legend']    = 'Title and behavior';
 $GLOBALS['TL_LANG']['tl_poll']['redirect_legend'] = 'Redirect settings';
 $GLOBALS['TL_LANG']['tl_poll']['publish_legend']  = 'Publish settings';
 

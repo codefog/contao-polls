@@ -29,5 +29,5 @@ $GLOBALS['TL_LANG']['tl_poll_votes']['anonymous'] = '<span style="color:#b3b3b3;
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_poll_votes']['delete'] = array('Delete option', 'Delete option ID %s');
-$GLOBALS['TL_LANG']['tl_poll_votes']['show']   = array('Option details', 'Show the details of option ID %s');
+$GLOBALS['TL_LANG']['tl_poll_votes']['delete'] = array('Delete vote', 'Delete vote ID %s');
+$GLOBALS['TL_LANG']['tl_poll_votes']['show']   = array('Vote details', 'Show the details of vote ID %s');
