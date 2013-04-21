@@ -15,7 +15,7 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD']['polls'] = array('Sody', 'Zarządzaj sondami i ich opcjami.');
+$GLOBALS['TL_LANG']['MOD']['polls'] = array('Sondy', 'Zarządzaj sondami i ich opcjami.');
 
 
 /**
