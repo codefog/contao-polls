@@ -48,7 +48,7 @@ class ModulePoll extends \Module
 		}
 
 		// Return if there is no poll
-		if (!$this->poll)
+		if (!$this->poll && !$this->poll_current)
 		{
 			return '';
 		}
@@ -68,7 +68,7 @@ class ModulePoll extends \Module
 		if ($this->poll_current)
 		{
 			$time = time();
-			$objCurrentPoll = $this->Database->prepare("SELECT id FROM tl_poll WHERE (showStart='' OR showStart<?) AND (showStop='' OR showStop>?)" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY showStart DESC, activeStart DESC")
+			$objCurrentPoll = $this->Database->prepare("SELECT id FROM tl_poll WHERE (showStart!='' OR showStart<?) AND (showStop!='' OR showStop>?)" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY showStart DESC, activeStart DESC")
 											 ->limit(1)
 											 ->execute($time, $time);
 
@@ -76,6 +76,13 @@ class ModulePoll extends \Module
 			{
 				$intPoll = $objCurrentPoll->id;
 			}
+		}
+
+		// Return if there is no poll
+		if (!$intPoll)
+		{
+			$this->Template->poll = '';
+			return;
 		}
 
 		$objPoll = new \Poll($intPoll);
