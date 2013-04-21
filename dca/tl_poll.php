@@ -185,8 +185,8 @@ $GLOBALS['TL_DCA']['tl_poll'] = array
  			'default'                 => 'opt1',
  			'exclude'                 => true,
 			'inputType'               => 'select',
-			'options'                 => array('opt1', 'opt2', 'opt3'),
-			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behavior'],
+			'options'                 => array('opt1', 'opt2'),
+			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted'],
 			'eval'                    => array('tl_class'=>'w50'),
 			'sql'                     => "varchar(4) NOT NULL default ''"
 		),
@@ -197,7 +197,7 @@ $GLOBALS['TL_DCA']['tl_poll'] = array
 			'exclude'                 => true,
 			'inputType'               => 'select',
 			'options'                 => array('opt1', 'opt2', 'opt3'),
-			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behavior'],
+			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behaviorVoted'],
 			'eval'                    => array('tl_class'=>'w50'),
 			'sql'                     => "varchar(4) NOT NULL default ''"
  		),
@@ -207,8 +207,8 @@ $GLOBALS['TL_DCA']['tl_poll'] = array
  			'default'                 => 'opt1',
  			'exclude'                 => true,
 			'inputType'               => 'select',
- 			'options'                 => array('opt1', 'opt2', 'opt3'),
-			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behavior'],
+ 			'options'                 => array('opt1', 'opt2'),
+			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted'],
 			'eval'                    => array('tl_class'=>'w50'),
 			'sql'                     => "varchar(4) NOT NULL default ''"
 		),
@@ -219,7 +219,7 @@ $GLOBALS['TL_DCA']['tl_poll'] = array
 			'exclude'                 => true,
 			'inputType'               => 'select',
 			'options'                 => array('opt1', 'opt2', 'opt3'),
-			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behavior'],
+			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['behaviorVoted'],
 			'eval'                    => array('tl_class'=>'w50'),
 			'sql'                     => "varchar(4) NOT NULL default ''"
 		),

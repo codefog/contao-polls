@@ -22,7 +22,7 @@ $GLOBALS['TL_LANG']['tl_poll_option']['published'] = array('Publish option', 'Ma
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_poll_option']['title_legend']   = 'Title and votes';
+$GLOBALS['TL_LANG']['tl_poll_option']['title_legend'] = 'Title and votes';
 
 
 /**

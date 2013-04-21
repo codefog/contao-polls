@@ -48,7 +48,7 @@ class ModulePoll extends \Module
 		}
 
 		// Return if there is no poll
-		if (!$this->poll)
+		if (!$this->poll && !$this->poll_current)
 		{
 			return '';
 		}
@@ -76,6 +76,13 @@ class ModulePoll extends \Module
 			{
 				$intPoll = $objCurrentPoll->id;
 			}
+		}
+
+		// Return if there is no poll
+		if (!$intPoll)
+		{
+			$this->Template->poll = '';
+			return;
 		}
 
 		$objPoll = new \Poll($intPoll);

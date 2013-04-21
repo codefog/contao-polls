@@ -24,6 +24,7 @@ $GLOBALS['TL_DCA']['tl_poll_votes'] = array
 		'dataContainer'               => 'Table',
 		'ptable'                      => 'tl_poll_option',
 		'closed'                      => true,
+		'doNotCopyRecords'            => true,
 		'notEditable'                 => true,
 		'onload_callback' => array
 		(
@@ -161,7 +162,7 @@ class tl_poll_votes extends Backend
 
 			if ($objMember->numRows)
 			{
-				$args[2] = '<a href="contao/main.php?do=member&act=edit&id=' . $row['member'] . '">' . $objMember->username . ' (ID ' . $row['member'] . ')</a>';
+				$args[2] = '<a href="contao/main.php?do=member&act=show&id=' . $row['member'] . '&rt=' . REQUEST_TOKEN . '">' . $objMember->username . ' (ID ' . $row['member'] . ')</a>';
 			}
 		}
 
