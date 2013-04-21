@@ -215,8 +215,6 @@ class Poll extends \Frontend
 				$this->reload();
 			}
 
-			$this->import('FrontendUser', 'User');
-
 			// Set the cookie
 			$this->setCookie($this->strCookie . $this->objPoll->id, $time, ($time + (365 * 86400)));
 
@@ -225,7 +223,7 @@ class Poll extends \Frontend
 				'pid' => $objWidget->value,
 				'tstamp' => $time,
 				'ip' => \Environment::get('remoteAddr'),
-				'member' => FE_USER_LOGGED_IN ? $this->User->id : 0
+				'member' => FE_USER_LOGGED_IN ? \FrontendUser::getInstance()->id : 0
 			);
 
 			\Database::getInstance()->prepare("INSERT INTO tl_poll_votes %s")->set($arrSet)->execute();
