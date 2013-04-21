@@ -93,7 +93,7 @@ $GLOBALS['TL_DCA']['tl_poll_option'] = array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_poll_option']['votes'],
 				'href'                => 'table=tl_poll_votes',
-				'icon'                => 'system/modules/polls/public/icon.png'
+				'icon'                => 'system/modules/polls/assets/icon.png'
 			)
 		)
 	),
