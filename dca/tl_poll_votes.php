@@ -24,6 +24,7 @@ $GLOBALS['TL_DCA']['tl_poll_votes'] = array
 		'dataContainer'               => 'Table',
 		'ptable'                      => 'tl_poll_option',
 		'closed'                      => true,
+		'doNotCopyRecords'            => true,
 		'notEditable'                 => true,
 		'onload_callback' => array
 		(
