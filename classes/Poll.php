@@ -121,7 +121,7 @@ class Poll extends \Frontend
 		$objTemplate->hasVoted = $blnHasVoted;
 
 		// Check if we should display the results
-		if (($blnActive && !$blnHasVoted && (($this->objPoll->active_behaviorNotVoted == 'opt1' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->active_behaviorNotVoted == 'opt3' && (!\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))) || ($blnActive && $blnHasVoted && (($this->objPoll->active_behaviorVoted == 'opt1' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->active_behaviorVoted == 'opt3' && ($blnJustVoted || !\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))) || (!$blnActive && !$blnHasVoted && (($this->objPoll->inactive_behaviorNotVoted == 'opt1' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->inactive_behaviorNotVoted == 'opt3' && (!\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))) || (!$blnActive && $blnHasVoted && (($this->objPoll->inactive_behaviorVoted == 'opt1' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->inactive_behaviorVoted == 'opt3' && (!\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))))
+		if (($blnActive && !$blnHasVoted && (($this->objPoll->active_behaviorNotVoted == 'opt1' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->active_behaviorNotVoted == 'opt3' && (!\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))) || ($blnActive && $blnHasVoted && (($this->objPoll->active_behaviorVoted == 'opt2' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->active_behaviorVoted == 'opt1' && ($blnJustVoted || !\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))) || (!$blnActive && !$blnHasVoted && (($this->objPoll->inactive_behaviorNotVoted == 'opt1' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->inactive_behaviorNotVoted == 'opt3' && (!\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))) || (!$blnActive && $blnHasVoted && (($this->objPoll->inactive_behaviorVoted == 'opt2' && \Input::get('results') == $this->objPoll->id) || ($this->objPoll->inactive_behaviorVoted == 'opt1' && (!\Input::get('vote') || \Input::get('vote') != $this->objPoll->id)))))
 		{
 			$blnShowResults = true;
 		}
@@ -202,7 +202,7 @@ class Poll extends \Frontend
 		$objTemplate->resultsLink = '';
 
 		// Display the results link
-		if (($blnActive && !$blnHasVoted && $this->objPoll->active_behaviorNotVoted == 'opt1') || ($blnActive && $blnHasVoted && $this->objPoll->active_behaviorVoted == 'opt1') || (!$blnActive && !$blnHasVoted && $this->objPoll->inactive_behaviorNotVoted == 'opt1') || (!$blnActive && $blnHasVoted && $this->objPoll->inactive_behaviorVoted == 'opt1'))
+		if (($blnActive && !$blnHasVoted && $this->objPoll->active_behaviorNotVoted == 'opt1') || ($blnActive && $blnHasVoted && $this->objPoll->active_behaviorVoted == 'opt2') || (!$blnActive && !$blnHasVoted && $this->objPoll->inactive_behaviorNotVoted == 'opt1') || (!$blnActive && $blnHasVoted && $this->objPoll->inactive_behaviorVoted == 'opt2'))
 		{
 			$objTemplate->resultsLink = sprintf('<a href="%s" class="results_link" title="%s">%s</a>', $this->generatePollUrl('results'), specialchars($GLOBALS['TL_LANG']['MSC']['showResults']), $GLOBALS['TL_LANG']['MSC']['showResults']);
 		}
