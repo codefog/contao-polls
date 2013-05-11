@@ -47,6 +47,7 @@ $GLOBALS['TL_LANG']['tl_poll']['publish_legend']  = 'Veröffentlichung';
  */
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt1'] = 'Zeigt einen Link zum Ergebnis an.';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt2'] = 'Ergebnisse nicht anzeigen.';
+$GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt3'] = 'Ergebnisse sofort anzeigen.';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorVoted']['opt1']    = 'Ergebnisse sofort anzeigen.';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorVoted']['opt2']    = 'Zeigt einen Link zum Ergebnis an.';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorVoted']['opt3']    = 'Ergebnisse nicht anzeigen.';

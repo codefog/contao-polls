@@ -46,6 +46,7 @@ $GLOBALS['TL_LANG']['tl_poll']['publish_legend']  = 'Ustawienia publikacji';
  */
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt1'] = 'Wyświetl link "pokaż wyniki"';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt2'] = 'Nie pokazuj wyników wcale';
+$GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt3'] = 'Pokaż wyniki od razu';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorVoted']['opt1']    = 'Pokaż wyniki od razu';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorVoted']['opt2']    = 'Wyświetl link "pokaż wyniki"';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorVoted']['opt3']    = 'Nie pokazuj wyników wcale';
