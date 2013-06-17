@@ -31,11 +31,12 @@ $GLOBALS['TL_LANG']['tl_poll_option']['title_legend'] = 'Titel und Stimmen';
  */
 $GLOBALS['TL_LANG']['tl_poll_option']['voteSingle'] = '%s Stimme';
 $GLOBALS['TL_LANG']['tl_poll_option']['votePlural'] = '%s Stimmen';
-
+$GLOBALS['TL_LANG']['tl_poll_option']['imported']   ='Optionen importiert.';
 
 /**
  * Buttons
  */
+$GLOBALS['TL_LANG']['tl_poll_option']['import']     = array('Optionen importieren', 'Optionen über eine Textarea importieren.');
 $GLOBALS['TL_LANG']['tl_poll_option']['new']        = array('Neue Option', 'Eine neue Option anlegen.');
 $GLOBALS['TL_LANG']['tl_poll_option']['edit']       = array('Option bearbeiten', 'Option mit ID %s bearbeiten.');
 $GLOBALS['TL_LANG']['tl_poll_option']['editheader'] = array('Umfrage-Einstellungen bearbeiten', 'Einstellungen der Umfrage mit ID %s bearbeiten.');

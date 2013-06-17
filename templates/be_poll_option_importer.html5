@@ -1,0 +1,29 @@
+<div id="tl_buttons">
+	<a href="<?php echo $this->back->href; ?>" class="header_back" title="<?php echo specialchars($this->back->label); ?>" accesskey="b"><?php echo $this->back->label; ?></a>
+</div>
+
+<h2 class="sub_headline"><?php echo $this->title; ?></h2>
+
+<?php echo $this->messages; ?>
+
+<form action="<?php echo $this->action; ?>" id="<?php echo $this->formId; ?>" class="tl_form" method="post">
+<div class="tl_formbody_edit">
+	<input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formId; ?>">
+	<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+
+	<div class="long clr" style="margin-bottom:20px;">
+		<h3><label for="ctrl_answers">Options</label></h3>
+		<textarea id="ctrl_answers" class="tl_textarea" onfocus="Backend.getScrollOffset()"
+			cols="80" rows="12" name="options"></textarea>
+		<p class="tl_help tl_tip" title="">Eine Option pro Zeile</p>
+	</div>	
+
+</div>
+<div class="tl_formbody_submit">
+	<div class="tl_submit_container">
+	  	<input type="submit" name="save" id="save" class="tl_submit" accesskey="s" value="<?php echo specialchars($this->btn_submit); ?>">
+		<input type="submit" name="save" id="cancel" class="tl_submit" accesskey="c" value="<?php echo specialchars($this->btn_cancel); ?>">	  	
+	</div>
+</div>
+
+</form>

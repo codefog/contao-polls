@@ -24,7 +24,8 @@ ClassLoader::addNamespace('Polls');
 ClassLoader::addClasses(array
 (
 	// Classes
-	'Polls\Poll'           => 'system/modules/polls/classes/Poll.php',
+    'Polls\Poll'           => 'system/modules/polls/classes/Poll.php',
+    'Polls\OptionImporter' => 'system/modules/polls/classes/OptionImporter.php',
 
 	// Content elements
 	'Polls\ContentPoll'    => 'system/modules/polls/elements/ContentPoll.php',
@@ -40,8 +41,9 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'ce_poll'      => 'system/modules/polls/templates',
-	'mod_poll'     => 'system/modules/polls/templates',
-	'mod_polllist' => 'system/modules/polls/templates',
-	'poll_default' => 'system/modules/polls/templates'
+    'ce_poll'                  => 'system/modules/polls/templates',
+	'mod_poll'                 => 'system/modules/polls/templates',
+	'mod_polllist'             => 'system/modules/polls/templates',
+	'poll_default'             => 'system/modules/polls/templates',
+    'be_poll_option_importer'  => 'system/modules/polls/templates',
 ));
