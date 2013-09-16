@@ -2,11 +2,11 @@
 
 /**
  * polls extension for Contao Open Source CMS
- * 
- * Copyright (C) 2013 Codefog
- * 
+ *
+ * Copyright (C) 2013 Codefog Ltd
+ *
  * @package polls
- * @link    http://codefog.pl
+ * @author  Codefog Ltd <http://codefog.pl>
  * @author  Kamil Kuzminski <kamil.kuzminski@codefog.pl>
  * @license LGPL
  */
@@ -16,7 +16,7 @@
  * Extension version
  */
 @define('POLLS_VERSION', '1.0');
-@define('POLLS_BUILD', '1');
+@define('POLLS_BUILD', '2');
 
 
 /**
