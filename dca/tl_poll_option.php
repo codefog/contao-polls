@@ -2,18 +2,18 @@
 
 /**
  * polls extension for Contao Open Source CMS
- * 
- * Copyright (C) 2013 Codefog
- * 
+ *
+ * Copyright (C) 2013 Codefog Ltd
+ *
  * @package polls
- * @link    http://codefog.pl
+ * @author  Codefog Ltd <http://codefog.pl>
  * @author  Kamil Kuzminski <kamil.kuzminski@codefog.pl>
  * @license LGPL
  */
 
 
 /**
- * Table tl_poll_option 
+ * Table tl_poll_option
  */
 $GLOBALS['TL_DCA']['tl_poll_option'] = array
 (
@@ -224,7 +224,7 @@ class tl_poll_option extends Backend
 		if (!$row['published'])
 		{
 			$icon = 'invisible.gif';
-		}		
+		}
 
 		return '<a href="'.$this->addToUrl($href).'" title="'.specialchars($title).'"'.$attributes.'>'.$this->generateImage($icon, $label).'</a> ';
 	}
@@ -238,7 +238,7 @@ class tl_poll_option extends Backend
 	public function toggleVisibility($intId, $blnVisible)
 	{
 		$this->createInitialVersion('tl_poll_option', $intId);
-	
+
 		// Trigger the save_callback
 		if (is_array($GLOBALS['TL_DCA']['tl_poll_option']['fields']['published']['save_callback']))
 		{

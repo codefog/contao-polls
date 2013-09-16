@@ -2,11 +2,11 @@
 
 /**
  * polls extension for Contao Open Source CMS
- * 
- * Copyright (C) 2013 Codefog
- * 
+ *
+ * Copyright (C) 2013 Codefog Ltd
+ *
  * @package polls
- * @link    http://codefog.pl
+ * @author  Codefog Ltd <http://codefog.pl>
  * @author  Kamil Kuzminski <kamil.kuzminski@codefog.pl>
  * @license LGPL
  */
@@ -19,7 +19,7 @@ System::loadLanguageFile('tl_module');
 
 
 /**
- * Table tl_poll 
+ * Table tl_poll
  */
 $GLOBALS['TL_DCA']['tl_poll'] = array
 (
@@ -355,7 +355,7 @@ class tl_poll extends Backend
 		if (!$row['featured'])
 		{
 			$icon = 'featured_.gif';
-		}		
+		}
 
 		return '<a href="'.$this->addToUrl($href).'" title="'.specialchars($title).'"'.$attributes.'>'.$this->generateImage($icon, $label).'</a> ';
 	}
@@ -370,7 +370,7 @@ class tl_poll extends Backend
 	public function toggleFeatured($intId, $blnVisible)
 	{
 		$this->createInitialVersion('tl_poll', $intId);
-	
+
 		// Trigger the save_callback
 		if (is_array($GLOBALS['TL_DCA']['tl_poll']['fields']['featured']['save_callback']))
 		{
@@ -412,7 +412,7 @@ class tl_poll extends Backend
 		if (!$row['published'])
 		{
 			$icon = 'invisible.gif';
-		}		
+		}
 
 		return '<a href="'.$this->addToUrl($href).'" title="'.specialchars($title).'"'.$attributes.'>'.$this->generateImage($icon, $label).'</a> ';
 	}
@@ -426,7 +426,7 @@ class tl_poll extends Backend
 	public function toggleVisibility($intId, $blnVisible)
 	{
 		$this->createInitialVersion('tl_poll', $intId);
-	
+
 		// Trigger the save_callback
 		if (is_array($GLOBALS['TL_DCA']['tl_poll']['fields']['published']['save_callback']))
 		{

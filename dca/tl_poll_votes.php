@@ -2,18 +2,18 @@
 
 /**
  * polls extension for Contao Open Source CMS
- * 
- * Copyright (C) 2013 Codefog
- * 
+ *
+ * Copyright (C) 2013 Codefog Ltd
+ *
  * @package polls
- * @link    http://codefog.pl
+ * @author  Codefog Ltd <http://codefog.pl>
  * @author  Kamil Kuzminski <kamil.kuzminski@codefog.pl>
  * @license LGPL
  */
 
 
 /**
- * Table tl_poll_votes 
+ * Table tl_poll_votes
  */
 $GLOBALS['TL_DCA']['tl_poll_votes'] = array
 (
