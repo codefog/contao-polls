@@ -44,3 +44,4 @@ $GLOBALS['TL_LANG']['tl_poll_option']['show']       = array('Szczegóły opcji',
 $GLOBALS['TL_LANG']['tl_poll_option']['toggle']     = array('Publikuj/ukryj opcję', 'Publikuj/ukryj opcję ID %s');
 $GLOBALS['TL_LANG']['tl_poll_option']['votes']      = array('Pokaż głosy', 'Pokaż głosy dla opcji ID %s');
 $GLOBALS['TL_LANG']['tl_poll_option']['pastenew']   = array('Dodaj nową na górze', 'Dodaj nową po opcji ID %s');
+$GLOBALS['TL_LANG']['tl_poll_option']['reset']      = array('Resetuj sondę', 'Resetuj sondę i usuń wszystkie głosy', 'Czy na pewno chcesz zresetować sondę i usunąć wszystkie głosy? Ta operacja nie może być cofnięta!');

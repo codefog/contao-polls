@@ -171,7 +171,7 @@ class Poll extends \Frontend
 		(
 			'name' => 'options',
 			'options' => $arrOptions,
-			'inputType' => 'radio',
+			'inputType' => ($this->objPoll->type == 'single') ? 'radio' : 'checkbox',
 			'eval' => array('mandatory'=>true, 'disabled'=>$blnClosed)
 		);
 
@@ -214,18 +214,24 @@ class Poll extends \Frontend
 				$this->reload();
 			}
 
+			$arrValues = is_array($objWidget->value) ? $objWidget->value : array($objWidget->value);
+
 			// Set the cookie
 			$this->setCookie($this->strCookie . $this->objPoll->id, $time, ($time + (365 * 86400)));
 
-			$arrSet = array
-			(
-				'pid' => $objWidget->value,
-				'tstamp' => $time,
-				'ip' => \Environment::get('remoteAddr'),
-				'member' => FE_USER_LOGGED_IN ? \FrontendUser::getInstance()->id : 0
-			);
+            // Store the votes
+            foreach ($arrValues as $value)
+            {
+    			$arrSet = array
+    			(
+    				'pid' => $value,
+    				'tstamp' => $time,
+    				'ip' => \Environment::get('remoteAddr'),
+    				'member' => FE_USER_LOGGED_IN ? \FrontendUser::getInstance()->id : 0
+    			);
 
-			\Database::getInstance()->prepare("INSERT INTO tl_poll_votes %s")->set($arrSet)->execute();
+    			\Database::getInstance()->prepare("INSERT INTO tl_poll_votes %s")->set($arrSet)->execute();
+            }
 
 			// Redirect or reload the page
 			$_SESSION['POLL'][$this->objPoll->id] = $GLOBALS['TL_LANG']['MSC']['voteSubmitted'];

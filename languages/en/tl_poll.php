@@ -16,6 +16,7 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_poll']['title']                     = array('Title', 'Please enter the poll title.');
+$GLOBALS['TL_LANG']['tl_poll']['type']                      = array('Type', 'Here you can choose the poll type.');
 $GLOBALS['TL_LANG']['tl_poll']['voteInterval']              = array('Vote interval', 'Here you can set the time value in seconds before a user can vote again. Set to 0 if vote can be made only once.');
 $GLOBALS['TL_LANG']['tl_poll']['protected']                 = array('Protected poll', 'Only the logged in users will be able to vote.');
 $GLOBALS['TL_LANG']['tl_poll']['featured']                  = array('Feature poll', 'Mark the poll as featured.');
@@ -44,6 +45,8 @@ $GLOBALS['TL_LANG']['tl_poll']['publish_legend']  = 'Publish settings';
 /**
  * Reference
  */
+$GLOBALS['TL_LANG']['tl_poll']['type']['single']           = 'Single vote (radio)';
+$GLOBALS['TL_LANG']['tl_poll']['type']['multiple']         = 'Multiple vote (checkbox)';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt1'] = 'Display a "show results" link';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt2'] = 'Do not show results at all';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt3'] = 'Show results immedietaly';

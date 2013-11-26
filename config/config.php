@@ -15,8 +15,8 @@
 /**
  * Extension version
  */
-@define('POLLS_VERSION', '1.0');
-@define('POLLS_BUILD', '2');
+@define('POLLS_VERSION', '1.1');
+@define('POLLS_BUILD', '0');
 
 
 /**
@@ -27,7 +27,8 @@ array_insert($GLOBALS['BE_MOD']['content'], 4, array
 	'polls' => array
 	(
 		'tables' => array('tl_poll', 'tl_poll_option', 'tl_poll_votes'),
-		'icon'   => 'system/modules/polls/assets/icon.png'
+		'icon'   => 'system/modules/polls/assets/icon.png',
+		'reset'  => array('tl_poll_option', 'resetPoll')
 	)
 ));
 

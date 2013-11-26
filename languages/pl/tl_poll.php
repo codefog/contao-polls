@@ -16,6 +16,7 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_poll']['title']                     = array('Tytuł', 'Wprowadź tytuł sondy.');
+$GLOBALS['TL_LANG']['tl_poll']['type']                      = array('Typ', 'Tutaj możesz wybrać typ sondy.');
 $GLOBALS['TL_LANG']['tl_poll']['voteInterval']              = array('Odstęp czasowy', 'Tutaj możesz wprowadzić liczbę sekund po której użytkownik będzie mógł znowu zagłosować. Wprowadź 0, jeśli głos może zostać oddany tylko raz.');
 $GLOBALS['TL_LANG']['tl_poll']['protected']                 = array('Sonda chroniona', 'Tylko zalogowani użytkownicy będą mogli zagłosować.');
 $GLOBALS['TL_LANG']['tl_poll']['featured']                  = array('Wyróżnij sondę', 'Oznacz sondę jako wyróżnioną.');
@@ -44,6 +45,8 @@ $GLOBALS['TL_LANG']['tl_poll']['publish_legend']  = 'Ustawienia publikacji';
 /**
  * Reference
  */
+$GLOBALS['TL_LANG']['tl_poll']['type']['single']           = 'Pojedynczy głos (radio)';
+$GLOBALS['TL_LANG']['tl_poll']['type']['multiple']         = 'Wielokrotny głos (checkbox)';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt1'] = 'Wyświetl link "pokaż wyniki"';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt2'] = 'Nie pokazuj wyników wcale';
 $GLOBALS['TL_LANG']['tl_poll']['behaviorNotVoted']['opt3'] = 'Pokaż wyniki od razu';

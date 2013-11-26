@@ -47,6 +47,13 @@ $GLOBALS['TL_DCA']['tl_poll_option'] = array
 		),
 		'global_operations' => array
 		(
+			'reset' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_poll_option']['reset'],
+				'href'                => 'key=reset',
+				'icon'                => 'delete.gif',
+				'attributes'          => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['tl_poll_option']['reset'][2] . '\')) return false; Backend.getScrollOffset();"'
+			),
 			'all' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
@@ -172,6 +179,21 @@ if (\Poll::checkMultilingual())
  */
 class tl_poll_option extends Backend
 {
+
+    /**
+     * Reset the poll and purge all votes
+     */
+    public function resetPoll()
+    {
+        if (\Input::get('key') != 'reset')
+        {
+            $this->redirect($this->getReferer());
+        }
+
+        $this->Database->prepare("DELETE FROM tl_poll_votes WHERE pid IN (SELECT id FROM tl_poll_option WHERE pid=?)")->execute(\Input::get('id'));
+        $this->redirect(str_replace('&key=reset', '', \Environment::get('request')));
+    }
+
 
 	/**
 	 * List poll options
