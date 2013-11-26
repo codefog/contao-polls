@@ -44,3 +44,4 @@ $GLOBALS['TL_LANG']['tl_poll_option']['show']       = array('Option details', 'S
 $GLOBALS['TL_LANG']['tl_poll_option']['toggle']     = array('Publish/unpublish option', 'Publish/unpublish option ID %s');
 $GLOBALS['TL_LANG']['tl_poll_option']['votes']      = array('View votes', 'View votes for option ID %s');
 $GLOBALS['TL_LANG']['tl_poll_option']['pastenew']   = array('Add new at the top', 'Add new after option ID %s');
+$GLOBALS['TL_LANG']['tl_poll_option']['reset']      = array('Reset poll', 'Reset poll and purge all votes', 'Are you sure you want to reset the poll and purge all votes? This cannot be undone!');

@@ -27,7 +27,8 @@ array_insert($GLOBALS['BE_MOD']['content'], 4, array
 	'polls' => array
 	(
 		'tables' => array('tl_poll', 'tl_poll_option', 'tl_poll_votes'),
-		'icon'   => 'system/modules/polls/assets/icon.png'
+		'icon'   => 'system/modules/polls/assets/icon.png',
+		'reset'  => array('tl_poll_option', 'resetPoll')
 	)
 ));
 

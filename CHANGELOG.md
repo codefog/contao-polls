@@ -5,6 +5,7 @@ Version 1.1.0 stable (2013-??-??)
 ---------------------------------
 
 ### Improved
+- Added the option to reset poll (thanks to René Zschoch)
 - Added the multiple vote feature (thanks to René Zschoch)
 
 
