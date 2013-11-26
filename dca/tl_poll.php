@@ -121,7 +121,7 @@ $GLOBALS['TL_DCA']['tl_poll'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},title,voteInterval,protected,featured,active_behaviorNotVoted,active_behaviorVoted,inactive_behaviorNotVoted,inactive_behaviorVoted;{redirect_legend:hide},jumpTo;{publish_legend},published,closed,activeStart,activeStop,showStart,showStop'
+		'default'                     => '{title_legend},title,type,voteInterval,protected,featured,active_behaviorNotVoted,active_behaviorVoted,inactive_behaviorNotVoted,inactive_behaviorVoted;{redirect_legend:hide},jumpTo;{publish_legend},published,closed,activeStart,activeStop,showStart,showStop'
 	),
 
 	// Fields
@@ -149,8 +149,19 @@ $GLOBALS['TL_DCA']['tl_poll'] = array
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'type' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_poll']['type'],
+			'default'                 => 'single',
+			'exclude'                 => true,
+			'inputType'               => 'select',
+			'options'                 => array('single', 'multiple'),
+			'reference'               => &$GLOBALS['TL_LANG']['tl_poll']['type'],
+			'eval'                    => array('tl_class'=>'w50'),
+			'sql'                     => "varchar(8) NOT NULL default ''"
 		),
 		'voteInterval' => array
 		(

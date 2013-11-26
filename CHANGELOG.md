@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.1.0 stable (2013-??-??)
+---------------------------------
+
+### Improved
+- Added the multiple vote feature (thanks to René Zschoch)
+
+
 Version 1.0.2 stable (2013-09-16)
 ---------------------------------
 
