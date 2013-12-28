@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.1.2 stable (2013-12-28)
+---------------------------------
+
+### Improved
+- Use the real IP address to log votes (see #2)
+
+
 Version 1.1.1 stable (2013-11-30)
 ---------------------------------
 
