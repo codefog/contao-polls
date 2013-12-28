@@ -195,7 +195,7 @@ class Poll extends \Frontend
 		$objTemplate->showForm = true;
 		$objTemplate->options = $objWidget;
 		$objTemplate->submit = (!$blnActive || $blnHasVoted || ($this->objPoll->protected && !FE_USER_LOGGED_IN)) ? '' : $GLOBALS['TL_LANG']['MSC']['vote'];
-		$objTemplate->action = ampersand($this->Environment->request);
+		$objTemplate->action = ampersand(\Environment::get('request'));
 		$objTemplate->formId = $strFormId;
 		$objTemplate->hasError = $doNotSubmit;
 		$objTemplate->resultsLink = '';
@@ -226,7 +226,7 @@ class Poll extends \Frontend
     			(
     				'pid' => $value,
     				'tstamp' => $time,
-    				'ip' => \Environment::get('remoteAddr'),
+    				'ip' => \Environment::get('ip'),
     				'member' => FE_USER_LOGGED_IN ? \FrontendUser::getInstance()->id : 0
     			);
 
@@ -260,7 +260,7 @@ class Poll extends \Frontend
 		$this->import('FrontendUser', 'User');
 		$objVote = \Database::getInstance()->prepare("SELECT * FROM tl_poll_votes WHERE (ip=? OR member=?) AND tstamp>? AND pid IN (SELECT id FROM tl_poll_option WHERE pid=?" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . ") ORDER BY tstamp DESC")
 										   ->limit(1)
-										   ->execute(\Environment::get('remoteAddr'), $this->User->id, $intExpires, $this->objPoll->id);
+										   ->execute(\Environment::get('ip'), $this->User->id, $intExpires, $this->objPoll->id);
 
 		// User has already voted
 		if ($objVote->numRows)
