@@ -8,7 +8,7 @@
  * @package polls
  * @author  Codefog <http://codefog.pl>
  * @author  Kamil Kuzminski <kamil.kuzminski@codefog.pl>
- * Translator: Lionel Maccaud (https://github.com/lionel-m)
+ * @author  Lionel Maccaud <https://github.com/lionel-m>
  * @license LGPL
  */
 
