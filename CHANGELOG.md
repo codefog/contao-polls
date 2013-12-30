@@ -1,7 +1,7 @@
 polls Changelog
 ===============
 
-Version 1.2.0 stable (2013-??-??)
+Version 1.2.0 stable (2013-12-30)
 ---------------------------------
 
 ### Improved
