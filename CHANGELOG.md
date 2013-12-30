@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.2.0 stable (2013-12-30)
+---------------------------------
+
+### Improved
+- Added the French translation (thanks to Lionel Maccaud)
+
+
 Version 1.1.2 stable (2013-12-28)
 ---------------------------------
 
