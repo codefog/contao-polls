@@ -12,6 +12,7 @@ The extension supports multilingual polls using [DC_Multilingual](https://github
 
 ### Available languages
 - English
+- French
 - German
 - Polish
 

@@ -3,7 +3,7 @@
 /**
  * polls extension for Contao Open Source CMS
  *
- * Copyright (C) 2014 Codefog
+ * Copyright (C) 2013 Codefog
  *
  * @package polls
  * @author  Codefog <http://codefog.pl>
