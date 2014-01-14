@@ -257,10 +257,9 @@ class Poll extends \Frontend
 			return true;
 		}
 
-		$this->import('FrontendUser', 'User');
 		$objVote = \Database::getInstance()->prepare("SELECT * FROM tl_poll_votes WHERE (ip=? OR member=?) AND tstamp>? AND pid IN (SELECT id FROM tl_poll_option WHERE pid=?" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . ") ORDER BY tstamp DESC")
 										   ->limit(1)
-										   ->execute(\Environment::get('ip'), $this->User->id, $intExpires, $this->objPoll->id);
+										   ->execute(\Environment::get('ip'), (FE_USER_LOGGED_IN ? \FrontendUser::getInstance()->id : 0), $intExpires, $this->objPoll->id);
 
 		// User has already voted
 		if ($objVote->numRows)
