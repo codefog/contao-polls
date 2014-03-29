@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.2.2 stable (2014-03-29)
+---------------------------------
+
+### Fixed
+- Fixed the user vote check
+
+
 Version 1.2.1 stable (2014-01-14)
 ---------------------------------
 
