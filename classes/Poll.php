@@ -287,16 +287,27 @@ class Poll extends \Frontend
 	 */
 	protected function generatePollUrl($strKey)
 	{
-		global $objPage;
-		$strParams = '';
+		list($strPage, $strQuery) = explode('?', \Environment::get('request'), 2);
+		$arrQuery = array();
 
-		// Check if we should include pagination parameter
-		if (\Input::get('page') != '' && \Input::get('page') > 0)
-		{
-			$strParams = ($GLOBALS['TL_CONFIG']['disableAlias'] ? '&amp;' : '?') . 'page=' . \Input::get('page');
-		}
+        // Parse the current query
+        if ($strQuery != '') {
+            $arrQuery = explode('&', $strQuery);
 
-		return ampersand($this->generateFrontendUrl($objPage->row())) . $strParams . (($GLOBALS['TL_CONFIG']['disableAlias'] || strlen($strParams)) ? '&amp;' : '?') . $strKey . '=' . $this->objPoll->id;
+            // Remove the "vote" and "results" parameters
+            foreach ($arrQuery as $k => $v) {
+                list($key, $value) = explode('=', $v, 2);
+
+                if ($key == 'vote' || $key == 'results') {
+                    unset($arrQuery[$k]);
+                }
+            }
+        }
+
+        // Add the key
+        $arrQuery[] = $strKey . '=' . $this->objPoll->id;
+
+		return ampersand($strPage . '?' . implode('&', $arrQuery));
 	}
 
 
