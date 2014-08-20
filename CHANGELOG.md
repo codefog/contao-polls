@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.2.3 stable (2014-08-??)
+---------------------------------
+
+### Fixed
+- Correctly generate the poll URL (see #5)
+
+
 Version 1.2.2 stable (2014-03-29)
 ---------------------------------
 
