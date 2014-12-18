@@ -1,6 +1,14 @@
 polls Changelog
 ===============
 
+Version 1.2.4 stable (2014-12-18)
+---------------------------------
+
+### Improved
+- Added the composer.json file
+- Updated the readme file
+
+
 Version 1.2.3 stable (2014-08-20)
 ---------------------------------
 
