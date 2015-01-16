@@ -24,13 +24,18 @@ ClassLoader::addNamespace('Polls');
 ClassLoader::addClasses(array
 (
 	// Classes
-	'Polls\Poll'           => 'system/modules/polls/classes/Poll.php',
+	'Polls\Poll' => 'system/modules/polls/classes/Poll.php',
 
 	// Content elements
-	'Polls\ContentPoll'    => 'system/modules/polls/elements/ContentPoll.php',
+	'Polls\ContentPoll' => 'system/modules/polls/elements/ContentPoll.php',
+
+	// Models
+	'Polls\PollModel'       => 'system/modules/polls/models/PollModel.php',
+	'Polls\PollOptionModel' => 'system/modules/polls/models/PollOptionModel.php',
+	'Polls\PollVotesModel'  => 'system/modules/polls/models/PollVotesModel.php',
 
 	// Modules
-	'Polls\ModulePoll'     => 'system/modules/polls/modules/ModulePoll.php',
+	'Polls\ModulePoll' => 'system/modules/polls/modules/ModulePoll.php',
 	'Polls\ModulePollList' => 'system/modules/polls/modules/ModulePollList.php'
 ));
 

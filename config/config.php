@@ -50,3 +50,11 @@ array_insert($GLOBALS['FE_MOD'], 4, array
  * Content elements
  */
 $GLOBALS['TL_CTE']['includes']['poll'] = 'ContentPoll';
+
+
+/**
+ * Models
+ */
+$GLOBALS['TL_MODELS']['tl_poll']        = 'PollModel';
+$GLOBALS['TL_MODELS']['tl_poll_option'] = 'PollOptionModel';
+$GLOBALS['TL_MODELS']['tl_poll_votes']  = 'PollVotesModel';
