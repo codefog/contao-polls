@@ -16,7 +16,7 @@
  * Extension version
  */
 @define('POLLS_VERSION', '1.2');
-@define('POLLS_BUILD', '4');
+@define('POLLS_BUILD', '5');
 
 
 /**
