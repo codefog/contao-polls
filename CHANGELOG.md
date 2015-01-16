@@ -1,6 +1,16 @@
 polls Changelog
 ===============
 
+Version 1.2.5 stable (2015-01-16)
+---------------------------------
+
+### Improved
+- Added the .gitignore file
+
+### Fixed
+- Added the models so extension is Contao 3.4 compatible
+
+
 Version 1.2.4 stable (2014-12-18)
 ---------------------------------
 
