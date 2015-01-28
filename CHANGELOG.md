@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.2.6 stable (2015-01-??)
+---------------------------------
+
+### Improved
+- Added the Italian translation (thanks to Paolo Brunelli)
+
+
 Version 1.2.5 stable (2015-01-16)
 ---------------------------------
 
