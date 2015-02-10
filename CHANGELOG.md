@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.2.7 stable (2015-??-??)
+---------------------------------
+
+### Improved
+- Updated the .htaccess file (see #6)
+
+
 Version 1.2.6 stable (2015-01-28)
 ---------------------------------
 
