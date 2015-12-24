@@ -22,6 +22,12 @@
         "contao": {
             "sources": {
                 "": "system/modules/polls"
+            },
+            "transifex": {
+                "project": "contao-polls",
+                "prefix": "master-",
+                "languages_cto": "languages",
+                "languages_tx": ".tx"
             }
         }
     }
