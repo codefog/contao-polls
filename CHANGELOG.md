@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.3.0 stable (2016-01-14)
+---------------------------------
+
+### Improved
+- Added the Persian translation (thanks to Hamid Abbaszadeh)
+
+
 Version 1.2.7 stable (2015-02-10)
 ---------------------------------
 
