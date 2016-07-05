@@ -1,6 +1,13 @@
 polls Changelog
 ===============
 
+Version 1.4.0 stable (2016-??-??)
+---------------------------------
+
+### Improved
+- Added the Bulgarian translation (thanks to P. Sinigersky)
+
+
 Version 1.3.0 stable (2016-01-14)
 ---------------------------------
 
