@@ -219,7 +219,13 @@ class tl_poll_option extends Backend
 		$width = $intTotal ? (round(($intVotes / $intTotal), 2) * 200) : 0;
 		$prcnt = $intTotal ? (round(($intVotes / $intTotal), 2) * 100) : 0;
 
-		return '<div><div style="display:inline-block;margin-right:8px;background-color:#8AB858;height:14px;line-height:14px;text-align:right;width:' . ($width + 30) . 'px;"><span style="color:#ffffff;font-size:10px;margin-right:4px;">' . $prcnt . ' %</span></div>' . $arrRow['title'] . ' <span style="padding-left:3px;color:#b3b3b3;">[' . sprintf((($intVotes == 1) ? $GLOBALS['TL_LANG']['tl_poll_option']['voteSingle'] : $GLOBALS['TL_LANG']['tl_poll_option']['votePlural']), $intVotes) . ']</span></div>';
+		if (version_compare(VERSION, '4.4', '>=')) {
+		    $height = 16;
+        } else {
+		    $height = 14;
+        }
+
+		return '<div><div style="display:inline-block;margin-right:8px;background-color:#8AB858;height:'.$height.'px;line-height:14px;text-align:right;width:' . ($width + 30) . 'px;"><span style="color:#ffffff;font-size:10px;margin-right:4px;">' . $prcnt . ' %</span></div>' . $arrRow['title'] . ' <span style="padding-left:3px;color:#b3b3b3;">[' . sprintf((($intVotes == 1) ? $GLOBALS['TL_LANG']['tl_poll_option']['voteSingle'] : $GLOBALS['TL_LANG']['tl_poll_option']['votePlural']), $intVotes) . ']</span></div>';
 	}
 
 
