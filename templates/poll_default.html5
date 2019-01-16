@@ -24,10 +24,10 @@
 <div class="formbody">
 <input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formId; ?>">
 <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
-<div class="widget">
+<div class="widget widget-checkbox">
   <?php echo $this->options->generateWithError(); ?>
 </div>
-<div class="submit_container">
+<div class="widget widget-submit submit_container">
 <?php if ($this->submit): ?>
   <input type="submit" class="submit" value="<?php echo $this->submit; ?>">
 <?php endif; ?>
