@@ -28,50 +28,7 @@ $GLOBALS['TL_DCA']['tl_poll'] = [
         'label' => [
             'fields' => ['title'],
             'format' => '%s',
-            'label_callback' => ['tl_poll', 'addStatus'],
         ],
-        //'operations' => [
-        //    'edit' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['edit'],
-        //        'href' => 'table=tl_poll_option',
-        //        'icon' => 'edit.gif',
-        //        'attributes' => 'class="contextmenu"',
-        //    ],
-        //    'editheader' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['editheader'],
-        //        'href' => 'act=edit',
-        //        'icon' => 'header.gif',
-        //        'attributes' => 'class="edit-header"',
-        //    ],
-        //    'copy' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['copy'],
-        //        'href' => 'act=copy',
-        //        'icon' => 'copy.gif',
-        //    ],
-        //    'delete' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['delete'],
-        //        'href' => 'act=delete',
-        //        'icon' => 'delete.gif',
-        //        'attributes' => 'onclick="if (!confirm(\''.$GLOBALS['TL_LANG']['MSC']['deleteConfirm'].'\')) return false; Backend.getScrollOffset();"',
-        //    ],
-        //    'toggle' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['toggle'],
-        //        'icon' => 'visible.gif',
-        //        'attributes' => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
-        //        'button_callback' => ['tl_poll', 'toggleIcon'],
-        //    ],
-        //    'feature' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['feature'],
-        //        'icon' => 'featured.gif',
-        //        'attributes' => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleFeatured(this, %s);"',
-        //        'button_callback' => ['tl_poll', 'iconFeatured'],
-        //    ],
-        //    'show' => [
-        //        'label' => &$GLOBALS['TL_LANG']['tl_poll']['show'],
-        //        'href' => 'act=show',
-        //        'icon' => 'show.gif',
-        //    ],
-        //],
     ],
 
     // Palettes
@@ -167,7 +124,6 @@ $GLOBALS['TL_DCA']['tl_poll'] = [
         ],
         'closed' => [
             'filter' => true,
-            'toggle' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy' => true, 'tl_class' => 'w50'],
             'sql' => ['type' => Types::BOOLEAN, 'default' => false],
@@ -202,15 +158,3 @@ $GLOBALS['TL_DCA']['tl_poll'] = [
         ],
     ],
 ];
-
-// Provide support for DC_Multilingual
-//// TODO
-//if (\Poll::checkMultilingual()) {
-//    $GLOBALS['TL_DCA']['tl_poll']['config']['dataContainer'] = 'Multilingual';
-//    $GLOBALS['TL_DCA']['tl_poll']['config']['languages'] = Poll::getAvailableLanguages();
-//    $GLOBALS['TL_DCA']['tl_poll']['config']['pidColumn'] = 'lid';
-//    $GLOBALS['TL_DCA']['tl_poll']['config']['fallbackLang'] = Poll::getFallbackLanguage();
-//
-//    // Make "title" field translatable
-//    $GLOBALS['TL_DCA']['tl_poll']['fields']['title']['eval']['translatableFor'] = '*';
-//}

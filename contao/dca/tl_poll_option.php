@@ -25,11 +25,15 @@ $GLOBALS['TL_DCA']['tl_poll_option'] = [
             'fields' => ['sorting'],
             'headerFields' => ['title', 'tstamp', 'published'],
         ],
+        'label' => [
+            'fields' => ['title'],
+            'format' => '%s',
+        ],
         'global_operations' => [
             'reset' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_poll_option']['reset'],
                 'href' => 'key=reset',
-                'icon' => 'delete.svg',
+                'icon' => 'sync.svg',
                 'attributes' => 'onclick="if (!confirm(\''.($GLOBALS['TL_LANG']['tl_poll_option']['reset'][2] ?? '').'\')) return false; Backend.getScrollOffset();"',
             ],
             'all',
@@ -68,21 +72,10 @@ $GLOBALS['TL_DCA']['tl_poll_option'] = [
             'sql' => ['type' => Types::STRING, 'length' => 255, 'default' => ''],
         ],
         'published' => [
+            'toggle' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy' => true, 'tl_class' => 'w50 m12'],
             'sql' => ['type' => Types::BOOLEAN, 'default' => false],
         ],
     ],
 ];
-
-// Provide support for DC_Multilingual
-// TODO
-//if (\Poll::checkMultilingual()) {
-//    $GLOBALS['TL_DCA']['tl_poll_option']['config']['dataContainer'] = 'Multilingual';
-//    $GLOBALS['TL_DCA']['tl_poll_option']['config']['languages'] = Poll::getAvailableLanguages();
-//    $GLOBALS['TL_DCA']['tl_poll_option']['config']['pidColumn'] = 'lid';
-//    $GLOBALS['TL_DCA']['tl_poll_option']['config']['fallbackLang'] = Poll::getFallbackLanguage();
-//
-//    // Make "title" field translatable
-//    $GLOBALS['TL_DCA']['tl_poll_option']['fields']['title']['eval']['translatableFor'] = '*';
-//}

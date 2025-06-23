@@ -285,37 +285,4 @@ class PollGenerator
 
         return null;
     }
-
-    /**
-     * Check if there is DC_Multilingual installed
-     * @return boolean
-     */
-    public static function checkMultilingual()
-    {
-        return (file_exists(TL_ROOT.'/system/drivers/DC_Multilingual.php') && count(self::getAvailableLanguages()) > 1) ? true : false;
-    }
-
-
-    /**
-     * Return a list of available languages
-     * @return array
-     */
-    public static function getAvailableLanguages()
-    {
-        $objDatabase = Database::getInstance();
-
-        return $objDatabase->execute("SELECT DISTINCT language FROM tl_page WHERE type='root'")->fetchEach('language');
-    }
-
-
-    /**
-     * Get a fallback language
-     * @return string
-     */
-    public static function getFallbackLanguage()
-    {
-        $objDatabase = Database::getInstance();
-
-        return $objDatabase->execute("SELECT language FROM tl_page WHERE type='root' AND fallback=1")->language;
-    }
 }

@@ -5,8 +5,20 @@ namespace Codefog\PollsBundle\Model;
 use Contao\Date;
 use Contao\Model;
 use Contao\Model\Collection;
+use Terminal42\DcMultilingualBundle\Model\Multilingual;
 
-class PollModel extends Model
+// Use the multilingual model if available
+if (class_exists(Multilingual::class)) {
+    class PollParentModel extends Multilingual
+    {
+    }
+} else {
+    class PollParentModel extends Model
+    {
+    }
+}
+
+class PollModel extends PollParentModel
 {
     protected static $strTable = 'tl_poll';
 

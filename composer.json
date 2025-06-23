@@ -17,7 +17,8 @@
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0",
-        "terminal42/contao-build-tools": "@dev"
+        "terminal42/contao-build-tools": "@dev",
+        "terminal42/dc_multilingual": "^4.6"
     },
     "suggest" : {
         "terminal42/dc_multilingual": "Adds the multilingual features"
