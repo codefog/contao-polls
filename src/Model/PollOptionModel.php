@@ -19,4 +19,9 @@ if (class_exists(Multilingual::class)) {
 class PollOptionModel extends PollOptionParentModel
 {
 	protected static $strTable = 'tl_poll_option';
+
+    public function countVotes(): int
+    {
+        return PollVotesModel::countBy('pid', $this->id);
+    }
 }

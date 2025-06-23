@@ -8,9 +8,19 @@ class PollVotesModel extends Model
 {
 	protected static $strTable = 'tl_poll_votes';
 
+    public static function countVotes(int $pollId): int
+    {
+        [$columns, $values] = static::generatePollCriteria($pollId);
+
+        return static::countBy($columns, $values);
+    }
+
     public static function hasIpVoted(int $pollId, int $expires, string $ip): bool
     {
-        [$columns, $values] = static::generateVotedCriteria($pollId, $expires);
+        [$columns, $values] = static::generatePollCriteria($pollId, $expires);
+
+        $columns[] = 'tstamp>?';
+        $values[] = $expires;
 
         $columns[] = 'ip=?';
         $values[] = $ip;
@@ -20,7 +30,10 @@ class PollVotesModel extends Model
 
     public static function hasMemberVoted(int $pollId, int $expires, int $memberId): bool
     {
-        [$columns, $values] = static::generateVotedCriteria($pollId, $expires);
+        [$columns, $values] = static::generatePollCriteria($pollId, $expires);
+
+        $columns[] = 'tstamp>?';
+        $values[] = $expires;
 
         $columns[] = 'member=?';
         $values[] = $memberId;
@@ -28,11 +41,8 @@ class PollVotesModel extends Model
         return static::findOneBy($columns, $values) !== null;
     }
 
-    private static function generateVotedCriteria(int $pollId, int $expires): array
+    private static function generatePollCriteria(int $pollId): array
     {
-        $columns = ['tstamp>?'];
-        $values = [$expires];
-
         if (!static::isPreviewMode([])) {
             $columns[] = 'pid IN (SELECT id FROM tl_poll_option WHERE pid=? AND published=?)';
             $values[] = $pollId;

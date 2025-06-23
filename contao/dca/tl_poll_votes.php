@@ -11,6 +11,7 @@ $GLOBALS['TL_DCA']['tl_poll_votes'] = [
         'closed' => true,
         'notEditable' => true,
         'notCopyable' => true,
+        'notSortable' => true,
         'doNotCopyRecords' => true,
         'sql' => [
             'keys' => [

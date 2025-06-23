@@ -4,19 +4,27 @@ namespace Codefog\PollsBundle;
 
 use Codefog\HasteBundle\Form\Form;
 use Codefog\PollsBundle\Model\PollModel;
+use Codefog\PollsBundle\Model\PollOptionModel;
 use Codefog\PollsBundle\Model\PollVotesModel;
 use Contao\Controller;
+use Contao\CoreBundle\Exception\ResponseException;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\FrontendTemplate;
 use Contao\FrontendUser;
+use Contao\PageModel;
 use Doctrine\DBAL\Connection;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PollGenerator
 {
     public function __construct(
         private readonly Connection $connection,
+        private readonly ContentUrlGenerator $contentUrlGenerator,
         private readonly Security $security,
         private readonly TranslatorInterface $translator,
     )
@@ -76,11 +84,7 @@ class PollGenerator
         $form = $this->createPollForm($poll);
 
         // Add the vote
-        if ($form->validate() && !$request->request->get('results')) {
-            if (!$poll->canBeVoted()) {
-                Controller::reload();
-            }
-
+        if ($form->validate() && $poll->canBeVoted() && !$request->query->get('results')) {
             $this->processPollForm($form, $request, $poll);
         }
 
@@ -101,19 +105,19 @@ class PollGenerator
     private function generateResults(FrontendTemplate $template, Poll $poll): string
     {
         $results = [];
-        $votesCount = array_sum($poll->getOptions()->fetchEach('votes'));
+        $totalVotes = PollVotesModel::countVotes((int) $poll->getModel()->id);
 
-        // Generate results
+        /** @var PollOptionModel $optionModel */
         foreach ($poll->getOptions() as $optionModel) {
             $results[] = [
                 'title' => $optionModel->title,
                 'votes' => $optionModel->votes,
-                'prcnt' => ($votesCount > 0) ? (round(($optionModel->votes / $votesCount), 2) * 100) : 0,
+                'prcnt' => ($totalVotes > 0) ? (round(($optionModel->countVotes() / $totalVotes), 2) * 100) : 0,
             ];
         }
 
         $template->showResults = true;
-        $template->total = $votesCount;
+        $template->total = $totalVotes;
         $template->results = $results;
         $template->formLinkUrl = '';
 
@@ -204,26 +208,35 @@ class PollGenerator
     private function processPollForm(Form $form, Request $request, Poll $poll): void
     {
         $memberId = $this->getFrontendUser()?->id;
-
-        // Set the cookie
-        // TODO
-        //$this->setCookie($this->strCookie.$pollModel->id, $time, ($time + (365 * 86400)));
+        $time = time();
 
         // Store the votes
         foreach ((array) $form->fetch('options') as $value) {
             $this->connection->insert('tl_poll_votes', [
                 'pid' => $value,
-                'tstamp' => time(),
+                'tstamp' => $time,
                 'ip' => $request->getClientIp(),
                 'member' => $memberId ?: 0,
             ]);
         }
 
-        // Redirect or reload the page
-        //$_SESSION['POLL'][$pollModel->id] = $GLOBALS['TL_LANG']['MSC']['poll_vote_submitted'];
+        $targetPageId = $poll->getModel()->jumpTo;
+
+        // Generate the redirect URL
+        if (($targetPage = PageModel::findPublishedById($targetPageId)) !== null) {
+            $redirectUrl = $this->contentUrlGenerator->generate($targetPage, [], UrlGeneratorInterface::ABSOLUTE_URL);
+        } else {
+            $redirectUrl = $request->getUri();
+        }
+
+        // Create the redirect response and set the cookie
+        $response = new RedirectResponse($redirectUrl, 303);
+        $response->headers->setCookie(Cookie::create($this->getCookieName($poll->getModel()), $time, ($time + (365 * 86400))));
+
+        // Set the confirmation message
         $request->getSession()->getFlashBag()->add($this->getFlashBagKey($poll), $this->translator->trans('MSC.poll_vote_submitted', [], 'contao_default'));
-        // TODO
-        //$this->jumpToOrReload($this->jumpTo);
+
+        throw new ResponseException($response);
     }
 
     protected function generatePollUrl(PollModel $pollModel, string $strKey): string
