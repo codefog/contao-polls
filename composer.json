@@ -18,12 +18,6 @@
     "suggest" : {
         "terminal42/dc_multilingual": "Adds the multilingual features"
     },
-    "conflict": {
-        "contao-legacy/polls": "*"
-    },
-    "replace": {
-        "contao-legacy/polls": "self.version"
-    },
     "extra": {
         "contao": {
             "sources": {
