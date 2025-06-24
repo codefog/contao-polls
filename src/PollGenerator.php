@@ -3,10 +3,10 @@
 namespace Codefog\PollsBundle;
 
 use Codefog\HasteBundle\Form\Form;
+use Codefog\HasteBundle\UrlParser;
 use Codefog\PollsBundle\Model\PollModel;
 use Codefog\PollsBundle\Model\PollOptionModel;
 use Codefog\PollsBundle\Model\PollVotesModel;
-use Contao\Controller;
 use Contao\CoreBundle\Exception\ResponseException;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\FrontendTemplate;
@@ -27,6 +27,7 @@ class PollGenerator
         private readonly ContentUrlGenerator $contentUrlGenerator,
         private readonly Security $security,
         private readonly TranslatorInterface $translator,
+        private readonly UrlParser $urlParser,
     )
     {
     }
@@ -73,7 +74,7 @@ class PollGenerator
         }
 
         if ($this->shouldDisplayResults($request, $poll, $hasUserVotedNow)) {
-            return $this->generateResults($template, $poll);
+            return $this->generateResults($template, $request, $poll);
         }
 
         return $this->generateForm($template, $request, $poll);
@@ -95,14 +96,13 @@ class PollGenerator
 
         // Display the results link
         if ($this->shouldDisplayResultsLink($poll)) {
-            // TODO
-            //$template->resultsLinkUrl = $this->generatePollUrl('results');
+            $template->resultsLinkUrl = $this->generatePollUrl($request, $poll, 'results');
         }
 
         return $template->parse();
     }
 
-    private function generateResults(FrontendTemplate $template, Poll $poll): string
+    private function generateResults(FrontendTemplate $template, Request $request, Poll $poll): string
     {
         $results = [];
         $totalVotes = PollVotesModel::countVotes((int) $poll->getModel()->id);
@@ -123,8 +123,7 @@ class PollGenerator
 
         // Display the form link
         if ($poll->isActive() && !$poll->hasUserVoted()) {
-            // TODO
-            //$template->formLinkUrl = $this->generatePollUrl('vote');
+            $template->formLinkUrl = $this->generatePollUrl($request, $poll, 'vote');
         }
 
         return $template->parse();
@@ -239,29 +238,13 @@ class PollGenerator
         throw new ResponseException($response);
     }
 
-    protected function generatePollUrl(PollModel $pollModel, string $strKey): string
+    protected function generatePollUrl(Request $request, Poll $poll, string $queryKey): string
     {
-        [$strPage, $strQuery] = explode('?', \Environment::get('request'), 2);
-        $arrQuery = array();
+        $url = $request->getUri();
+        $url = $this->urlParser->removeQueryString(['results', 'vote'], $url);
+        $url = $this->urlParser->addQueryString(sprintf('%s=%s', $queryKey, $poll->getModel()->id), $url);
 
-        // Parse the current query
-        if ($strQuery != '') {
-            $arrQuery = explode('&', $strQuery);
-
-            // Remove the "vote" and "results" parameters
-            foreach ($arrQuery as $k => $v) {
-                [$key, $value] = explode('=', $v, 2);
-
-                if ($key == 'vote' || $key == 'results') {
-                    unset($arrQuery[$k]);
-                }
-            }
-        }
-
-        // Add the key
-        $arrQuery[] = $strKey . '=' . $this->objPoll->id;
-
-        return ampersand($strPage . '?' . implode('&', $arrQuery));
+        return $url;
     }
 
     private function createPollForm(Poll $poll): Form

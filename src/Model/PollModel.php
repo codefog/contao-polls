@@ -111,27 +111,36 @@ class PollModel extends PollParentModel
         $values = [];
 
         if (isset($criteria['active'])) {
-            $columns[] = match($criteria['active']) {
-                'yes' => "closed='' AND (activeStart='' OR activeStart<$time) AND (activeStop='' OR activeStop>$time)",
-                'no' => "(closed=1 OR ((activeStart!='' AND activeStart>=$time) OR (activeStop!='' AND activeStop<=$time)))",
-                default => throw new \InvalidArgumentException(sprintf('Unsupported active option: %s', $criteria['visible'])),
-            };
+            switch($criteria['active']) {
+                case 'yes':
+                    $columns[] = "closed='' AND (activeStart='' OR activeStart<$time) AND (activeStop='' OR activeStop>$time)";
+                    break;
+                case 'no':
+                    $columns[] = "(closed=1 OR ((activeStart!='' AND activeStart>=$time) OR (activeStop!='' AND activeStop<=$time)))";
+                    break;
+            }
         }
 
         if (isset($criteria['featured'])) {
-            $columns[] = match($criteria['featured']) {
-                'yes' => "featured=1",
-                'no' => "featured=''",
-                default => throw new \InvalidArgumentException(sprintf('Unsupported featured option: %s', $criteria['visible'])),
-            };
+            switch($criteria['featured']) {
+                case 'yes':
+                    $columns[] = "featured=1";
+                    break;
+                case 'no':
+                    $columns[] = "featured=''";
+                    break;
+            }
         }
 
         if (isset($criteria['visible'])) {
-            $columns[] = match($criteria['visible']) {
-                'yes' => "(showStart='' OR showStart<$time) AND (showStop='' OR showStop>$time)",
-                'no' => "((showStart!='' AND showStart>=$time) OR (showStop!='' AND showStop<=$time))",
-                default => throw new \InvalidArgumentException(sprintf('Unsupported visible option: %s', $criteria['visible'])),
-            };
+            switch($criteria['visible']) {
+                case 'yes':
+                    $columns[] = "(showStart='' OR showStart<$time) AND (showStop='' OR showStop>$time)";
+                    break;
+                case 'no':
+                    $columns[] = "((showStart!='' AND showStart>=$time) OR (showStop!='' AND showStop<=$time))";
+                    break;
+            }
         }
 
         if (!static::isPreviewMode([])) {

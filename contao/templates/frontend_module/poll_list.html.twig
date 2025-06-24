@@ -6,5 +6,5 @@
         {{ poll|raw }}
     {% endfor %}
 
-    {{ pagination|raw }}
+    {{ pagination|default|raw }}
 {% endblock %}
