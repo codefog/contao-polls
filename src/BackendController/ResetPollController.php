@@ -15,7 +15,7 @@ class ResetPollController
 
     public function __invoke(DataContainer $dc): void
     {
-        $this->connection->executeStatement('DELETE FROM tl_poll_votes WHERE pid IN (SELECT id FROM tl_poll_option WHERE pid=?)', [$dc->id]);
+        $this->connection->executeStatement('DELETE FROM tl_poll_vote WHERE pid IN (SELECT id FROM tl_poll_option WHERE pid=?)', [$dc->id]);
 
         Controller::redirect(System::getReferer());
     }

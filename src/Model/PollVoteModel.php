@@ -4,9 +4,9 @@ namespace Codefog\PollsBundle\Model;
 
 use Contao\Model;
 
-class PollVotesModel extends Model
+class PollVoteModel extends Model
 {
-	protected static $strTable = 'tl_poll_votes';
+	protected static $strTable = 'tl_poll_vote';
 
     public static function countVotes(int $pollId): int
     {

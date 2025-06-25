@@ -12,9 +12,9 @@ class PollVotesDataContainerListener
     {
     }
 
-    #[AsCallback('tl_poll_votes', 'config.onload')]
+    #[AsCallback('tl_poll_vote', 'config.onload')]
     public function onLoadCallback(DataContainer $dc): void
     {
-        $GLOBALS['TL_DCA']['tl_poll_votes']['list']['sorting']['root'] = $this->connection->fetchFirstColumn('SELECT id FROM tl_poll_votes WHERE pid=?', [$dc->id]);
+        $GLOBALS['TL_DCA']['tl_poll_vote']['list']['sorting']['root'] = $this->connection->fetchFirstColumn('SELECT id FROM tl_poll_vote WHERE pid=?', [$dc->id]);
     }
 }

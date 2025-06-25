@@ -6,7 +6,7 @@ use Codefog\HasteBundle\Form\Form;
 use Codefog\HasteBundle\UrlParser;
 use Codefog\PollsBundle\Model\PollModel;
 use Codefog\PollsBundle\Model\PollOptionModel;
-use Codefog\PollsBundle\Model\PollVotesModel;
+use Codefog\PollsBundle\Model\PollVoteModel;
 use Contao\CoreBundle\Exception\ResponseException;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\FrontendTemplate;
@@ -105,7 +105,7 @@ class PollGenerator
     private function generateResults(FrontendTemplate $template, Request $request, Poll $poll): string
     {
         $results = [];
-        $totalVotes = PollVotesModel::countVotes((int) $poll->getModel()->id);
+        $totalVotes = PollVoteModel::countVotes((int) $poll->getModel()->id);
 
         /** @var PollOptionModel $optionModel */
         foreach ($poll->getOptions() as $optionModel) {
@@ -188,10 +188,10 @@ class PollGenerator
 
         if ($pollModel->protected && ($frontendUser = $this->getFrontendUser()) !== null)
         {
-            return PollVotesModel::hasMemberVoted((int) $pollModel->id, $expires, (int) $frontendUser->id);
+            return PollVoteModel::hasMemberVoted((int) $pollModel->id, $expires, (int) $frontendUser->id);
         }
 
-        return PollVotesModel::hasIpVoted((int) $pollModel->id, $expires, $request->getClientIp());
+        return PollVoteModel::hasIpVoted((int) $pollModel->id, $expires, $request->getClientIp());
     }
 
     private function getCookieName(PollModel $pollModel): string
@@ -211,7 +211,7 @@ class PollGenerator
 
         // Store the votes
         foreach ((array) $form->fetch('options') as $value) {
-            $this->connection->insert('tl_poll_votes', [
+            $this->connection->insert('tl_poll_vote', [
                 'pid' => $value,
                 'tstamp' => $time,
                 'ip' => $request->getClientIp(),

@@ -18,10 +18,10 @@ class PollOptionDataContainerListener
 
         // Get the total number of votes
         if ($total === null) {
-            $total = $this->connection->fetchOne('SELECT COUNT(*) AS total FROM tl_poll_votes WHERE pid IN (SELECT id FROM tl_poll_option WHERE pid=?)', [$row['pid']]);
+            $total = $this->connection->fetchOne('SELECT COUNT(*) AS total FROM tl_poll_vote WHERE pid IN (SELECT id FROM tl_poll_option WHERE pid=?)', [$row['pid']]);
         }
 
-        $votes = $this->connection->fetchOne('SELECT COUNT(*) AS total FROM tl_poll_votes WHERE pid=?', [$row['id']]);
+        $votes = $this->connection->fetchOne('SELECT COUNT(*) AS total FROM tl_poll_vote WHERE pid=?', [$row['id']]);
 
         $width = $total ? (round(($votes / $total), 2) * 200) : 0;
         $prcnt = $total ? (round(($votes / $total), 2) * 100) : 0;

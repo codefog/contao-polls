@@ -22,6 +22,6 @@ class PollOptionModel extends PollOptionParentModel
 
     public function countVotes(): int
     {
-        return PollVotesModel::countBy('pid', $this->id);
+        return PollVoteModel::countBy('pid', $this->id);
     }
 }

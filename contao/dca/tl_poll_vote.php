@@ -2,7 +2,7 @@
 
 use Doctrine\DBAL\Types\Types;
 
-$GLOBALS['TL_DCA']['tl_poll_votes'] = [
+$GLOBALS['TL_DCA']['tl_poll_vote'] = [
 
     // Config
     'config' => [
@@ -58,7 +58,7 @@ $GLOBALS['TL_DCA']['tl_poll_votes'] = [
             'filter' => true,
             'search' => true,
             'foreignKey' => 'tl_member.username',
-            'reference' => [0 => &$GLOBALS['TL_LANG']['tl_poll_votes']['anonymous']],
+            'reference' => [0 => &$GLOBALS['TL_LANG']['tl_poll_vote']['anonymous']],
             'sql' => ['type' => Types::INTEGER, 'unsigned' => true, 'default' => 0],
         ],
     ],
