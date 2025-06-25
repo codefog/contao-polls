@@ -23,4 +23,4 @@ $GLOBALS['TL_LANG']['MOD']['polls'] = array('Polls', 'Manage the polls and their
  */
 $GLOBALS['TL_LANG']['FMD']['polls']    = 'Polls';
 $GLOBALS['TL_LANG']['FMD']['poll']     = array('Poll', 'Displays a poll on the page.');
-$GLOBALS['TL_LANG']['FMD']['polllist'] = array('Poll list', 'Displays a poll list on the page.');
+$GLOBALS['TL_LANG']['FMD']['poll_list'] = array('Poll list', 'Displays a poll list on the page.');

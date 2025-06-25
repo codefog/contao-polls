@@ -24,4 +24,4 @@ $GLOBALS['TL_LANG']['MOD']['polls'] = array('Sondages', 'Gérer les sondages et 
  */
 $GLOBALS['TL_LANG']['FMD']['polls']    = 'Sondages';
 $GLOBALS['TL_LANG']['FMD']['poll']     = array('Sondage', 'Affiche un sondage sur la page.');
-$GLOBALS['TL_LANG']['FMD']['polllist'] = array('Liste de sondages', 'Affiche une liste de sondages sur la page.');
+$GLOBALS['TL_LANG']['FMD']['poll_list'] = array('Liste de sondages', 'Affiche une liste de sondages sur la page.');

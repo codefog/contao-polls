@@ -13,7 +13,7 @@ use Contao\ModuleModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsFrontendModule('polllist', category: 'polls', template: 'frontend_module/poll_list')]
+#[AsFrontendModule('poll_list', category: 'polls', template: 'frontend_module/poll_list')]
 class PollListController extends AbstractFrontendModuleController
 {
     public function __construct(private readonly PollGenerator $pollGenerator)

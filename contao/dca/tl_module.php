@@ -4,7 +4,7 @@ use Doctrine\DBAL\Types\Types;
 
 // Palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['poll'] = '{title_legend},name,headline,type;{config_legend},poll,poll_current;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['polllist'] = '{title_legend},name,headline,type;{config_legend},poll_active,poll_visible,poll_featured,numberOfItems,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['poll_list'] = '{title_legend},name,headline,type;{config_legend},poll_active,poll_visible,poll_featured,numberOfItems,perPage;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 
 // Fields
 $GLOBALS['TL_DCA']['tl_module']['fields']['poll'] = [

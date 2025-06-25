@@ -14,8 +14,8 @@
 
 $GLOBALS['TL_LANG']['FMD']['poll']['0']     = 'نظرسنجی';
 $GLOBALS['TL_LANG']['FMD']['poll']['1']     = 'یک نظر سنجی در برگه نمایش می‌دهد.';
-$GLOBALS['TL_LANG']['FMD']['polllist']['0'] = 'فهرست نظرسنجی';
-$GLOBALS['TL_LANG']['FMD']['polllist']['1'] = 'یک فهرست نظرسنجی در برگه نمایش می‌دهد.';
+$GLOBALS['TL_LANG']['FMD']['poll_list']['0'] = 'فهرست نظرسنجی';
+$GLOBALS['TL_LANG']['FMD']['poll_list']['1'] = 'یک فهرست نظرسنجی در برگه نمایش می‌دهد.';
 $GLOBALS['TL_LANG']['FMD']['polls']         = 'نظرسنجی‌ها';
 $GLOBALS['TL_LANG']['MOD']['polls']['0']    = 'نظرسنجی‌ها';
 $GLOBALS['TL_LANG']['MOD']['polls']['1']    = 'مدیریت نظرسنجی‌ها و تنظیمات آنها.';
