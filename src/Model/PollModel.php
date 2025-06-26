@@ -54,7 +54,7 @@ class PollModel extends PollParentModel
         $values = [$time, $time];
 
         if (!static::isPreviewMode([])) {
-            $columns[] = '$t.published=?';
+            $columns[] = "$t.published=?";
             $values[] = 1;
         }
 
