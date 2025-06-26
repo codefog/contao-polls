@@ -15,6 +15,6 @@ class ContentDataContainerListener
     #[AsCallback('tl_module', 'fields.poll.options')]
     public function onPollOptionsCallback(): array
     {
-        return $this->connection->fetchAllKeyValue('SELECT id, title FROM tl_poll' . (LoadDataContainerListener::checkMultilingual() ? ' WHERE lid=0' : '') . ' ORDER BY title');
+        return $this->connection->fetchAllKeyValue('SELECT id, title FROM tl_poll' . (LoadDataContainerListener::checkMultilingual() ? ' WHERE langPid=0' : '') . ' ORDER BY title');
     }
 }

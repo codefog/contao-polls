@@ -2,13 +2,14 @@
 
 namespace Codefog\PollsBundle\Model;
 
+use Codefog\PollsBundle\EventListener\LoadDataContainerListener;
 use Contao\Date;
 use Contao\Model;
 use Contao\Model\Collection;
 use Terminal42\DcMultilingualBundle\Model\Multilingual;
 
 // Use the multilingual model if available
-if (class_exists(Multilingual::class)) {
+if (LoadDataContainerListener::checkMultilingual()) {
     class PollParentModel extends Multilingual
     {
     }
@@ -47,16 +48,17 @@ class PollModel extends PollParentModel
 
     public static function findCurrentPublished(): static|null
     {
+        $t = static::getTable();
         $time = Date::floorToMinute();
-        $columns = ["(showStart='' OR showStart<?) AND (showStop='' OR showStop>?)"];
+        $columns = ["($t.showStart='' OR $t.showStart<?) AND ($t.showStop='' OR $t.showStop>?)"];
         $values = [$time, $time];
 
         if (!static::isPreviewMode([])) {
-            $columns[] = 'published=?';
+            $columns[] = '$t.published=?';
             $values[] = 1;
         }
 
-        return static::findOneBy($columns, $values, ['order' => 'showStart DESC, activeStart DESC']);
+        return static::findOneBy($columns, $values, ['order' => "$t.showStart DESC, $t.activeStart DESC"]);
     }
 
     public static function findPublishedById(int $id): static|null
@@ -65,11 +67,12 @@ class PollModel extends PollParentModel
             return null;
         }
 
-        $columns = ['id=?'];
+        $t = static::getTable();
+        $columns = ["$t.id=?"];
         $values = [$id];
 
         if (!static::isPreviewMode([])) {
-            $columns[] = 'published=?';
+            $columns[] = "$t.published=?";
             $values[] = 1;
         }
 
@@ -89,10 +92,12 @@ class PollModel extends PollParentModel
 
     public static function findByCriteria(array $criteria, int $limit, int $offset): Collection|null
     {
+        $t = static::getTable();
+
         $options = [
             'limit' => $limit,
             'offset' => $offset,
-            'order' => 'closed ASC, showStart DESC, activeStart DESC',
+            'order' => "$t.closed ASC, $t.showStart DESC, $t.activeStart DESC",
         ];
 
         [$columns, $values] = static::getColumnsValuesFromCriteria($criteria);
@@ -106,6 +111,7 @@ class PollModel extends PollParentModel
 
     private static function getColumnsValuesFromCriteria(array $criteria): array
     {
+        $t = static::getTable();
         $time = Date::floorToMinute();
         $columns = [];
         $values = [];
@@ -113,10 +119,10 @@ class PollModel extends PollParentModel
         if (isset($criteria['active'])) {
             switch($criteria['active']) {
                 case 'yes':
-                    $columns[] = "closed='' AND (activeStart='' OR activeStart<$time) AND (activeStop='' OR activeStop>$time)";
+                    $columns[] = "$t.closed='' AND ($t.activeStart='' OR $t.activeStart<$time) AND ($t.activeStop='' OR $t.activeStop>$time)";
                     break;
                 case 'no':
-                    $columns[] = "(closed=1 OR ((activeStart!='' AND activeStart>=$time) OR (activeStop!='' AND activeStop<=$time)))";
+                    $columns[] = "($t.closed=1 OR (($t.activeStart!='' AND $t.activeStart>=$time) OR ($t.activeStop!='' AND $t.activeStop<=$time)))";
                     break;
             }
         }
@@ -124,10 +130,10 @@ class PollModel extends PollParentModel
         if (isset($criteria['featured'])) {
             switch($criteria['featured']) {
                 case 'yes':
-                    $columns[] = "featured=1";
+                    $columns[] = "$t.featured=1";
                     break;
                 case 'no':
-                    $columns[] = "featured=''";
+                    $columns[] = "$t.featured=''";
                     break;
             }
         }
@@ -135,16 +141,16 @@ class PollModel extends PollParentModel
         if (isset($criteria['visible'])) {
             switch($criteria['visible']) {
                 case 'yes':
-                    $columns[] = "(showStart='' OR showStart<$time) AND (showStop='' OR showStop>$time)";
+                    $columns[] = "($t.showStart='' OR $t.showStart<$time) AND ($t.showStop='' OR $t.showStop>$time)";
                     break;
                 case 'no':
-                    $columns[] = "((showStart!='' AND showStart>=$time) OR (showStop!='' AND showStop<=$time))";
+                    $columns[] = "(($t.showStart!='' AND $t.showStart>=$time) OR ($t.showStop!='' AND $t.showStop<=$time))";
                     break;
             }
         }
 
         if (!static::isPreviewMode([])) {
-            $columns[] = 'published=?';
+            $columns[] = "$t.published=?";
             $values[] = 1;
         }
 

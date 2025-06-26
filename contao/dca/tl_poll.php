@@ -44,12 +44,6 @@ $GLOBALS['TL_DCA']['tl_poll'] = [
         'tstamp' => [
             'sql' => ['type' => Types::INTEGER, 'unsigned' => true, 'default' => 0],
         ],
-        'lid' => [
-            'sql' => ['type' => Types::INTEGER, 'unsigned' => true, 'default' => 0],
-        ],
-        'language' => [
-            'sql' => ['type' => Types::STRING, 'length' => 2, 'default' => ''],
-        ],
         'title' => [
             'search' => true,
             'inputType' => 'text',

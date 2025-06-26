@@ -60,12 +60,6 @@ $GLOBALS['TL_DCA']['tl_poll_option'] = [
         'sorting' => [
             'sql' => ['type' => Types::INTEGER, 'unsigned' => true, 'default' => 0],
         ],
-        'lid' => [
-            'sql' => ['type' => Types::INTEGER, 'unsigned' => true, 'default' => 0],
-        ],
-        'language' => [
-            'sql' => ['type' => Types::STRING, 'length' => 2, 'default' => ''],
-        ],
         'title' => [
             'inputType' => 'text',
             'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
