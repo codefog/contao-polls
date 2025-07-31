@@ -34,7 +34,7 @@ class LoadDataContainerListener
         }
 
         if ($table === 'tl_poll_option') {
-            $GLOBALS['TL_DCA'][$table]['config']['dataContainer'] = 'Multilingual';
+            $GLOBALS['TL_DCA'][$table]['config']['dataContainer'] = Driver::class;
             $GLOBALS['TL_DCA'][$table]['config']['languages'] = $this->getAvailableLanguages();
             $GLOBALS['TL_DCA'][$table]['config']['fallbackLang'] = $this->getFallbackLanguage();
 
