@@ -1,0 +1,10 @@
+{% extends "@Contao/frontend_module/_base.html.twig" %}
+{% set searchable = false %}
+
+{% block content %}
+    {% for poll in polls %}
+        {{ poll|raw }}
+    {% endfor %}
+
+    {{ pagination|default|raw }}
+{% endblock %}

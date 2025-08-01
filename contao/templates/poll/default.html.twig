@@ -1,0 +1,53 @@
+{% trans_default_domain "contao_default" %}
+
+{% set poll_attributes = attrs()
+  .set('id', 'poll-%d'|format(id))
+  .addClass('featured', isFeatured)
+  .addClass('protected', isProtected)
+  .addClass('closed', not isActive)
+%}
+
+<div{{ poll_attributes }}>
+  <h4>{{ title }}</h4>
+
+  {% if message %}
+    <div>{{ message }}</div>
+  {% endif %}
+
+  {% if isProtected %}
+    <div>{{ 'MSC.poll_login_to_vote'|trans }}</div>
+  {% endif %}
+
+  {% if not isActive %}
+    <div>{{ 'MSC.poll_closed'|trans }}</div>
+  {% endif %}
+
+  {% if showResults %}
+    <div>
+      <ul>
+        {% for result in results %}
+          <li>{{ result.title }} – {{ result.prcnt }}%</li>
+        {% endfor %}
+      </ul>
+
+      {% if formLinkUrl %}
+        <a href="{{ formLinkUrl }}" title="{{ 'MSC.poll_show_form'|trans }}">{{ 'MSC.poll_show_form'|trans }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if showForm %}
+    <div>
+      <form action="{{ form.action }}" method="{{ form.method }}">
+        <div class="formbody">
+          {{ form.hidden|raw }}
+          {{ form.fields|raw }}
+        </div>
+      </form>
+
+      {% if resultsLinkUrl %}
+        <a href="{{ resultsLinkUrl }}" title="{{ 'MSC.poll_show_results'|trans }}">{{ 'MSC.poll_show_results'|trans }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
