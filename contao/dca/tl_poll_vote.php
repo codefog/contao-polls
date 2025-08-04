@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_poll_vote'] = [
         'ip' => [
             'filter' => true,
             'search' => true,
-            'sql' => ['type' => Types::STRING, 'length' => 16, 'default' => ''],
+            'sql' => ['type' => Types::STRING, 'length' => 64, 'default' => ''],
         ],
         'member' => [
             'filter' => true,
